@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+	<head>
+		<title>Meu Setup - @SrCaveiraOFC</title>
+
+		<!-- meta -->
+		<meta charset="UTF-8" />
+
+		<!-- [name] -->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, shrink-to-fit=no" />
+		<meta name="author" content="Sr.Caveira" />
+		<meta name="keywords" content="setup, meu setup, gamer, setup gamer, pc, computador, peças de computador" />
+		<meta name="description" content="Um site para salvar todas as informações do seu setup." />
+		<meta name="theme-color" content="#000" />
+		<meta name="copyright" content="© 2023, Sr.Caveira" />
+		<meta name="robots" content="index, follow" />
+		<meta name="googlebot" content="noarchive" />
+		<meta name="generator" content="VS Code, Sublime Text 3" />
+		<meta name="rating" content="general" />
+
+		<!-- links -->
+		<link rel="icon" type="image/png" href="./computer-icon.png" />
+		<link
+			rel="stylesheet"
+			href="./style.css"
+		/>
+		<link
+			rel="stylesheet"
+			href="https://site-assets.fontawesome.com/releases/v6.2.0/css/all.css"
+		/>
+
+		<!-- scripts -->
+		<script
+			src="https://cdn.jsdelivr.net/npm/sweetalert2@11">
+		</script>
+		<script
+			src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"
+			integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ=="
+			crossorigin="anonymous"
+			referrerpolicy="no-referrer">
+		</script>
+	</head>
+	<body>
+		<header>
+			<h1><i class="fa fa-computer"></i>&nbsp;Meu Setup</h1>
+			<button class="btn-btn black"><i class="fa-solid fa-file-export"></i>&nbsp;Exportar Setup</button>
+			<input style="display: none;" type="file" id="setupJsonFile" onchange="readJsonFile(this.files)">
+			<button class="btn-btn black"><i class="fa-solid fa-file-import"></i>&nbsp;Importar Setup</button>
+			<a href="" class="downloadSetup"><button class="btn-btn black"><i class="fa-solid fa-file-download"></i>&nbsp;Baixar Setup</button></a>
+			<button class="btn-btn black"><i class="fa-solid fa-trash-can"></i>&nbsp;Apagar Setup</button>
+			<button class="btn-btn black"><i class="fa-solid fa-circle-plus"></i>&nbsp;Adicionar Peça</button>
+		</header>
+
+		<div class="search">
+			<i class="fa-solid fa-search search-icon"></i>
+			<input type="search" id="search-pieces" placeholder="..." />
+		</div>
+
+	<margin-top></margin-top>
+
+	<table class="setup-pieces">
+	  <caption><i class="fa-solid fa-microchip"></i>&nbsp;Hardware, Periféricos e Mais...</caption>
+
+	  <thead>
+	  	<tr>
+        <th colspan="5"><i class="fa-solid fa-sack-dollar"></i>&nbsp;TOTAL: <span id="totalValorOfSetup">Calculando...</span></th>
+      </tr>
+    </thead>
+
+	  <thead class="table-head-titles">
+	    <tr>
+	      <th scope="col"><i class="fa-solid fa-input-text"></i>&nbsp;Nome</th>
+	      <th scope="col"><i class="fa-solid fa-store"></i>&nbsp;Loja</th>
+	      <th scope="col"><i class="fa-solid fa-circle-info"></i>&nbsp;Status</th>
+	      <th scope="col"><i class="fa-solid fa-brazilian-real-sign"></i>&nbsp;Preço</th>
+	      <th scope="col"><i class="fa-solid fa-gear"></i>&nbsp;Ações</th>
+	    </tr>
+	  </thead>
+
+	  <tbody></tbody>
+	</table>
+	
+	<script src="./main.js"></script>
+	</body>
+</html>
