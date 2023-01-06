@@ -42,7 +42,7 @@ function renderSetup() {
 			tbody.innerHTML += `
 				<tr>
 		      <td data-label="Nome">${pieceName}</td>
-		      <td data-label="Loja">${storeName}</td>
+		      <td data-label="Loja" translate="no">${storeName}</td>
 		      <td data-label="Status">${pieceStatus}</td>
 		      <td data-label="Preço">${piecePrice}</td>
 		      <td data-label="Ações">
@@ -157,12 +157,12 @@ async function addPiece() {
   	window.localStorage.setItem('mySetup', JSON.stringify(setupJson));
 
   	Swal.fire({
-     icon: 'success',
-     text: `A peça (${pieceName}) foi adicionada ao seu setup!`,
-     background: '#0f0f0f',
-     confirmButtonColor: '#212121',
+     	icon: 'success',
+     	text: `A peça (${pieceName}) foi adicionada ao seu setup!`,
+     	background: '#0f0f0f',
+     	confirmButtonColor: '#212121',
    	}).then(() => {
-     renderSetup();
+     	renderSetup();
    	});
   }
 }
@@ -180,6 +180,29 @@ async function editPiece(pieceId) {
 		    const storeNameToEdit = setupItemToEditJson[1];
 		    const pieceStatusToEdit = setupItemToEditJson[2];
 		    const piecePriceToEdit = setupItemToEditJson[3];
+		    let html_options = `
+		    	<option value="" disabled="" style="background: #0f0f0f;">Selecione uma opção</option>
+		    `;
+
+		    if (pieceStatusToEdit == 'Novo') {
+		    	html_options += `
+			    	<option value="Novo" style="background: #0f0f0f;" selected>Novo</option>
+				    <option value="Semi-Novo" style="background: #0f0f0f;">Semi-Novo</option>
+				    <option value="Usado" style="background: #0f0f0f;">Usado</option>
+		    	`;
+		    } else if (pieceStatusToEdit == 'Semi-Novo') {
+		    	html_options += `
+			    	<option value="Novo" style="background: #0f0f0f;">Novo</option>
+				    <option value="Semi-Novo" style="background: #0f0f0f;" selected>Semi-Novo</option>
+				    <option value="Usado" style="background: #0f0f0f;">Usado</option>
+		    	`;
+		    } else if (pieceStatusToEdit == 'Usado') {
+		    	html_options += `
+			    	<option value="Novo" style="background: #0f0f0f;">Novo</option>
+				    <option value="Semi-Novo" style="background: #0f0f0f;">Semi-Novo</option>
+				    <option value="Usado" style="background: #0f0f0f;" selected>Usado</option>
+		    	`;
+		    }
 
 			  const { value: formValues } = await Swal.fire({
 			    title: 'Editar Peça',
@@ -187,10 +210,7 @@ async function editPiece(pieceId) {
 			      `<input style="width: 300px" id="swal-input1" type="text" class="swal2-input" placeholder="Nome da Peça" value="${pieceNameToEdit}">
 			      <input style="width: 300px" id="swal-input2" type="text" class="swal2-input" placeholder="Nome da Loja" value="${storeNameToEdit}">
 			      <select class="swal2-select" style="width: 300px" id="swal-input3" style="display: flex; background: #0f0f0f;">
-			      	<option value="" disabled="" style="background: #0f0f0f;">Selecione uma opção</option>
-			      	<option value="Novo" style="background: #0f0f0f;">Novo</option>
-			      	<option value="Semi-Novo" style="background: #0f0f0f;">Semi-Novo</option>
-			      	<option value="Usado" style="background: #0f0f0f;">Usado</option>
+			      	${html_options}
 			      </select>
 			      <input style="width: 300px" id="swal-input4" type="number" class="swal2-input" placeholder="Valor da Peça (00,00)" value="${piecePriceToEdit}">
 			      `,
